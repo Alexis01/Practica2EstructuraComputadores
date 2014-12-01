@@ -1,0 +1,95 @@
+# Embest IDE Project File, Format Version 1.00
+# WARNING: DO NOT EDIT OR DELETE THIS PROJECT FILE!
+
+<BEGIN> PROJECT_NAME
+Pr2a
+<END>
+
+<BEGIN> CONFIG
+
+	<BEGIN> CPU
+	MODULE=arm7.DLL
+	FAMILY=ARM7
+	FAMILYID=1
+	MEMBER=ARM7
+	MEMBERID=1
+	ENDIAN=0
+	<END>
+
+	<BEGIN> DEBUG
+	LINK=.\debug\Pr2a.elf
+	SYMBOL=.\debug\Pr2a.elf
+	DOWNLOAD=.\debug\Pr2a.elf
+	DOWNLOADADDR=0x0C000000
+	AUTODOWNLOAD=FALSE
+	AUTOSCRIPT=FALSE
+	VERIFY=TRUE
+	USEMEMMAP=FALSE
+	EXECFDOWN=FALSE
+	EXECFENTRY=TRUE
+	<END>
+
+	<BEGIN> REMOTE
+	DEVICE=SimArm7.DLL
+	SPEED=0
+	COMMTYPE=PARALLEL
+	PARALLEL=LPT1
+	<END>
+
+	<BEGIN> DIR
+	SUBDIR=FALSE
+	<END>
+
+<END>
+
+<BEGIN> BUILD_CONFIG
+	CONFIG_DLL=GccArmSettingPage.dll
+	<BEGIN> COMPILE_COMMAND_LINE
+	-gdwarf -c $(SOURCE_FILE) -o.\debug\$(OBJ_FILE)
+	<END>
+	<BEGIN> ASSEMBLE_COMMAND_LINE
+	-gdwarf2 $(SOURCE_FILE) -o.\debug\$(OBJ_FILE)
+	<END>
+	<BEGIN> LINK_COMMAND_LINE
+	arm-elf-ld -TC:\hlocal\Pr2a\ldscript.ld  -o.\debug\Pr2a.elf $(OBJ_FILES)
+	<END>
+<END>
+
+<BEGIN> PROJECT_FILES
+
+	<BEGIN> GROUP="Project Source Files"
+		<PROP> GROUP_FILTER="*.c;*.cpp;*.cc;*.cxx;*.s;*.asm"
+
+		<BEGIN> SOURCE_FILE
+		SOURCE=.\init.s
+		STATUS=CLOSE
+		<END>
+
+		<BEGIN> SOURCE_FILE
+		SOURCE=.\main.c
+		STATUS=CLOSE
+		<END>
+
+	<END>
+
+	<BEGIN> GROUP="Project Header Files"
+		<PROP> GROUP_FILTER="*.h;*.inl;*.mac;*.inc"
+
+	<END>
+
+	<BEGIN> GROUP="common"
+		<PROP> GROUP_FILTER=""
+
+		<BEGIN> SOURCE_FILE
+		SOURCE=.\ev40boot.cs
+		STATUS=CLOSE
+		<END>
+
+		<BEGIN> SOURCE_FILE
+		SOURCE=.\ldscript.ld
+		STATUS=CLOSE
+		<END>
+
+	<END>
+
+<END>
